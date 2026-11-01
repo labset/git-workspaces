@@ -21,6 +21,7 @@ import {
     excludeOperationalBranches,
     selectAndDeleteBranches
 } from '../lib/branches';
+import { handleCliError } from '../lib/cli';
 
 const listMergedBranches = async ({ target }: { target?: string }) => {
     const params = ['--merged'];
@@ -39,4 +40,4 @@ const target = process.argv.slice(2).shift();
 listMergedBranches({ target })
     .then(excludeOperationalBranches)
     .then(selectAndDeleteBranches(/(?<branchName>.*)/))
-    .catch(console.error);
+    .catch(handleCliError);

@@ -16,7 +16,8 @@
  * limitations under the License.
  */
 import { listRecentBranches, selectAndCheckoutBranch } from '../lib/branches';
+import { handleCliError } from '../lib/cli';
 
 listRecentBranches()
     .then(selectAndCheckoutBranch(/\d{4}-\d{2}-\d{2} (?<branchName>.*)/))
-    .catch(console.error);
+    .catch(handleCliError);

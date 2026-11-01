@@ -16,6 +16,7 @@
  * limitations under the License.
  */
 import { listRecentBranches, selectAndDeleteBranches } from '../lib/branches';
+import { handleCliError } from '../lib/cli';
 
 const mainBranches =
     /^\d{4}-\d{2}-\d{2} (main|master|production|demo|website|development)$/;
@@ -27,4 +28,4 @@ const excludeOperationalBranches = async (branches: string[]) => {
 listRecentBranches()
     .then(excludeOperationalBranches)
     .then(selectAndDeleteBranches(/\d{4}-\d{2}-\d{2} (?<branchName>.*)/, true))
-    .catch(console.error);
+    .catch(handleCliError);

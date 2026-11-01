@@ -17,7 +17,12 @@
  */
 import { Command } from 'commander';
 
-import { addWorktree, listWorktrees, selectAndRemoveWorktrees } from '../lib';
+import {
+    addWorktree,
+    handleCliError,
+    listWorktrees,
+    selectAndRemoveWorktrees
+} from '../lib';
 
 const program = new Command();
 program.description('manage git worktrees for the current repo');
@@ -37,4 +42,4 @@ program
         await listWorktrees().then(selectAndRemoveWorktrees);
     });
 
-program.parseAsync(process.argv).catch(console.error);
+program.parseAsync(process.argv).catch(handleCliError);
