@@ -17,5 +17,6 @@ export const gitRawOutputHandler = (output: string) => {
     return output
         .trim()
         .split('\n')
-        .map((info) => info.match(/'(?<info>.*)'/)?.groups?.info);
+        .map((info) => info.match(/'(?<info>.*)'/)?.groups?.info)
+        .filter((info): info is string => info !== undefined);
 };
