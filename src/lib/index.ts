@@ -17,3 +17,4 @@ export * from './item';
 export * from './config';
 export * from './branches';
 export * from './worktrees';
+export * from './cli';

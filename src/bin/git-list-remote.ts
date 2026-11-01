@@ -18,6 +18,7 @@
 import { simpleGit } from 'simple-git';
 
 import { selectAndCheckoutBranch } from '../lib/branches';
+import { handleCliError } from '../lib/cli';
 
 const listRemoteBranches = async ({ pattern }: { pattern?: string }) => {
     const params = ['--remote'];
@@ -36,4 +37,4 @@ const pattern = process.argv.slice(2).shift();
 
 listRemoteBranches({ pattern })
     .then(selectAndCheckoutBranch(/(?<branchName>.*)/))
-    .catch(console.error);
+    .catch(handleCliError);

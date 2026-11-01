@@ -21,8 +21,9 @@ import {
     listRecentBranches,
     selectAndDeleteBranches
 } from '../lib/branches';
+import { handleCliError } from '../lib/cli';
 
 listRecentBranches()
     .then(excludeOperationalBranches)
     .then(selectAndDeleteBranches(/(?<branchName>.*)/, true))
-    .catch(console.error);
+    .catch(handleCliError);

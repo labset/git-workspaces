@@ -21,6 +21,7 @@ import {
     excludeOperationalBranches,
     selectAndDeleteBranches
 } from '../lib/branches';
+import { handleCliError } from '../lib/cli';
 
 const listSquashedBranches = async ({ target }: { target?: string }) => {
     const params = ['--no-contains'];
@@ -39,4 +40,4 @@ const target = process.argv.slice(2).shift();
 listSquashedBranches({ target })
     .then(excludeOperationalBranches)
     .then(selectAndDeleteBranches(/(?<branchName>.*)/, true))
-    .catch(console.error);
+    .catch(handleCliError);

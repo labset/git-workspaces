@@ -21,6 +21,7 @@ import {
     configureWorkspace,
     fromInput,
     getConfiguration,
+    handleCliError,
     itemLocation,
     itemStatus,
     listWorkspaceItems,
@@ -115,4 +116,4 @@ program
         await configureWorkspace();
     });
 
-program.parseAsync(process.argv).catch(console.error);
+program.parseAsync(process.argv).catch(handleCliError);
