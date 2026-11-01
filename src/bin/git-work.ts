@@ -21,7 +21,8 @@ import {
     addWorktree,
     handleCliError,
     listWorktrees,
-    selectAndRemoveWorktrees
+    selectAndRemoveWorktrees,
+    selectWorktree
 } from '../lib';
 
 const program = new Command();
@@ -33,6 +34,14 @@ program
     .argument('<name>', 'worktree name')
     .action(async (name) => {
         await addWorktree(name);
+    });
+
+program
+    .command('list')
+    .description('list worktrees and select one to print its path')
+    .action(async () => {
+        const selected = await listWorktrees().then(selectWorktree);
+        if (selected) console.log(selected);
     });
 
 program
