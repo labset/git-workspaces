@@ -9,7 +9,8 @@
     "resolveJsonModule": true,
     "noImplicitReturns": true,
     "strictNullChecks": true,
-    "target": "ES2018"
+    "target": "ES2018",
+    "types": ["node", "jest"]
   },
   "exclude": [
     "node_modules",
