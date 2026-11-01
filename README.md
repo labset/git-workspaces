@@ -73,6 +73,13 @@ git tidy
 git work add <name>
 ```
 
+- list the current repo worktrees, select one to print its path
+
+```bash
+git work list
+cd "$(git work list)"   # jump to the selected worktree
+```
+
 - list the current repo worktrees, multi select the ones you want to remove
 
 ```bash

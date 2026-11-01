@@ -16,3 +16,4 @@
 export * from './list-worktrees';
 export * from './add-worktree';
 export * from './select-and-remove-worktrees';
+export * from './select-worktree';
